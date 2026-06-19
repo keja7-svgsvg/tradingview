@@ -8,53 +8,54 @@
     html, body {
       margin: 0;
       padding: 0;
-      background: #0f0f0f;
+      background: #050505;
       overflow: hidden;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
     .wrap {
       width: 100%;
-      height: 300px;
-      background: #131722;
+      height: 315px;
+      background: #050505;
       overflow: hidden;
     }
 
     .tabs {
       display: flex;
-      gap: 10px;
-      padding: 6px 12px 0;
-      background: #131722;
+      gap: 8px;
+      padding: 6px 10px 0;
+      background: #050505;
     }
 
     .tab {
       border: 0;
       background: transparent;
-      color: #e6e6e6;
-      font-size: 15px;
+      color: #d8d8d8;
+      font-size: 14px;
       font-weight: 700;
-      padding: 6px 16px;
-      border-radius: 8px;
+      padding: 5px 14px;
+      border-radius: 7px;
       cursor: pointer;
     }
 
     .tab.active {
-      background: #2a2a2a;
+      background: #1f1f1f;
       color: #ffffff;
     }
 
     #widget {
       width: 100%;
-      height: 250px;
+      height: 275px;
       overflow: hidden;
-      background: #131722;
+      background: #050505;
     }
 
     .tradingview-widget-container,
     .tradingview-widget-container__widget {
       width: 100%;
-      height: 250px;
+      height: 275px;
       overflow: hidden;
+      background: #050505;
     }
   </style>
 </head>
@@ -91,15 +92,16 @@
         symbols: [[name, symbol]],
         chartOnly: false,
         width: "100%",
-        height: 250,
+        height: 275,
         locale: "en",
         colorTheme: "dark",
         autosize: false,
         showVolume: false,
         showMA: false,
-        hideDateRanges: true,
+        hideDateRanges: false,
         hideMarketStatus: true,
         hideSymbolLogo: true,
+        backgroundColor: "#050505",
         scalePosition: "right",
         scaleMode: "Normal",
         fontFamily: "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif",
@@ -113,7 +115,6 @@
       button.addEventListener("click", () => {
         document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
         button.classList.add("active");
-
         loadWidget(button.dataset.symbol, button.dataset.name);
       });
     });
