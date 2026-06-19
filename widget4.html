@@ -18,6 +18,8 @@
       height: 315px;
       background: #050505;
       overflow: hidden;
+      border: 1px solid #242424;
+      box-sizing: border-box;
     }
 
     .tabs {
@@ -48,6 +50,7 @@
       height: 275px;
       overflow: hidden;
       background: #050505;
+      border-top: 1px solid #242424;
     }
 
     .tradingview-widget-container,
@@ -95,13 +98,13 @@
         height: 275,
         locale: "en",
         colorTheme: "dark",
+        backgroundColor: "#050505",
         autosize: false,
         showVolume: false,
         showMA: false,
         hideDateRanges: false,
         hideMarketStatus: true,
         hideSymbolLogo: true,
-        backgroundColor: "#050505",
         scalePosition: "right",
         scaleMode: "Normal",
         fontFamily: "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif",
@@ -115,6 +118,7 @@
       button.addEventListener("click", () => {
         document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
         button.classList.add("active");
+
         loadWidget(button.dataset.symbol, button.dataset.name);
       });
     });
