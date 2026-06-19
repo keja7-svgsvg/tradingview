@@ -1,150 +1,100 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8" />
-  <title>Market Dashboard</title>
-
-  <style>
-    body {
-      margin: 0;
-      padding: 12px;
-      background: #0f0f0f;
-      font-family: Inter, Arial, sans-serif;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
-
-    .card {
-      background: #171717;
-      border: 1px solid #2a2a2a;
-      border-radius: 14px;
-      padding: 10px;
-      height: 310px;
-      overflow: hidden;
-    }
-
-    .card h2 {
-      margin: 0 0 8px;
-      font-size: 14px;
-      font-weight: 600;
-      color: #e6e6e6;
-    }
-
-    .tradingview-widget-container {
-      height: 270px;
-    }
-
-    @media (max-width: 900px) {
-      .grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<title>Market Dashboard</title>
+<style>
+body {
+    margin: 0;
+    background: #0f0f0f;
+    padding: 10px;
+}
+</style>
 </head>
 
 <body>
-  <div class="grid">
 
-    <div class="card">
-      <h2>S&P 500</h2>
-      <div class="tradingview-widget-container">
-        <div id="spx"></div>
-      </div>
-    </div>
+<div class="tradingview-widget-container">
+  <div class="tradingview-widget-container__widget"></div>
 
-    <div class="card">
-      <h2>Nasdaq 100</h2>
-      <div class="tradingview-widget-container">
-        <div id="ndx"></div>
-      </div>
-    </div>
-
-    <div class="card">
-      <h2>Dow Jones</h2>
-      <div class="tradingview-widget-container">
-        <div id="dow"></div>
-      </div>
-    </div>
-
-    <div class="card">
-      <h2>US 10Y Treasury</h2>
-      <div class="tradingview-widget-container">
-        <div id="us10y"></div>
-      </div>
-    </div>
-
-    <div class="card">
-      <h2>SOFR</h2>
-      <div class="tradingview-widget-container">
-        <div id="sofr"></div>
-      </div>
-    </div>
-
-    <div class="card">
-      <h2>VIX</h2>
-      <div class="tradingview-widget-container">
-        <div id="vix"></div>
-      </div>
-    </div>
-
-    <div class="card">
-      <h2>WTI Crude</h2>
-      <div class="tradingview-widget-container">
-        <div id="wti"></div>
-      </div>
-    </div>
-
-    <div class="card">
-      <h2>Gold</h2>
-      <div class="tradingview-widget-container">
-        <div id="gold"></div>
-      </div>
-    </div>
-
-    <div class="card">
-      <h2>Bitcoin</h2>
-      <div class="tradingview-widget-container">
-        <div id="btc"></div>
-      </div>
-    </div>
-
-  </div>
-
-  <script src="https://s3.tradingview.com/tv.js"></script>
-
-  <script>
-    function makeChart(container, symbol) {
-      new TradingView.widget({
-        autosize: true,
-        symbol: symbol,
-        interval: "D",
-        timezone: "America/New_York",
-        theme: "dark",
-        style: "2",
-        locale: "en",
-        hide_top_toolbar: true,
-        hide_side_toolbar: true,
-        allow_symbol_change: false,
-        save_image: false,
-        container_id: container
-      });
-    }
-
-    makeChart("spx", "FOREXCOM:SPXUSD");
-    makeChart("ndx", "FOREXCOM:NSXUSD");
-    makeChart("dow", "FOREXCOM:DJI");
-
-    makeChart("us10y", "TVC:TNX");
-    makeChart("sofr", "FRED:SOFR");
-    makeChart("vix", "CAPITALCOM:VIX");
-
-    makeChart("wti", "TVC:USOIL");
-    makeChart("gold", "OANDA:XAUUSD");
-    makeChart("btc", "BINANCE:BTCUSDT");
+  <script type="text/javascript"
+  src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js"
+  async>
+  {
+    "colorTheme": "dark",
+    "dateRange": "12M",
+    "locale": "en",
+    "showChart": true,
+    "showSymbolLogo": true,
+    "isTransparent": false,
+    "width": "100%",
+    "height": 900,
+    "tabs": [
+      {
+        "title": "Markets",
+        "symbols": [
+          {
+            "s": "FOREXCOM:SPXUSD",
+            "d": "S&P 500"
+          },
+          {
+            "s": "FOREXCOM:NSXUSD",
+            "d": "Nasdaq 100"
+          },
+          {
+            "s": "FOREXCOM:DJI",
+            "d": "Dow Jones"
+          }
+        ]
+      },
+      {
+        "title": "Rates",
+        "symbols": [
+          {
+            "s": "FRED:SOFR",
+            "d": "SOFR"
+          },
+          {
+            "s": "TVC:US10Y",
+            "d": "US 10Y Treasury"
+          }
+        ]
+      },
+      {
+        "title": "Volatility",
+        "symbols": [
+          {
+            "s": "CBOE:VIX",
+            "d": "VIX"
+          }
+        ]
+      },
+      {
+        "title": "Commodities",
+        "symbols": [
+          {
+            "s": "TVC:USOIL",
+            "d": "WTI Crude"
+          },
+          {
+            "s": "OANDA:XAUUSD",
+            "d": "Gold"
+          }
+        ]
+      },
+      {
+        "title": "Crypto",
+        "symbols": [
+          {
+            "s": "COINBASE:BTCUSD",
+            "d": "Bitcoin"
+          }
+        ]
+      }
+    ]
+  }
   </script>
+</div>
+
 </body>
 </html>
