@@ -7,16 +7,18 @@
     html, body {
       margin: 0;
       padding: 0;
-      width: 100%;
-      height: 100%;
       background: #0f0f0f;
       overflow: hidden;
     }
 
-    .tradingview-widget-container,
+    .tradingview-widget-container {
+      width: 100%;
+      height: 520px;
+    }
+
     .tradingview-widget-container__widget {
       width: 100%;
-      height: 100vh;
+      height: 520px;
     }
   </style>
 </head>
@@ -36,7 +38,7 @@
       "showSymbolLogo": false,
       "isTransparent": false,
       "width": "100%",
-      "height": "100%",
+      "height": 520,
       "tabs": [
         {
           "title": "SOFR",
