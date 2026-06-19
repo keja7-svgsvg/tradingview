@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>SOFR & FX</title>
+
   <style>
     html, body {
       margin: 0;
@@ -14,7 +15,7 @@
 
     .wrap {
       width: 100%;
-      height: 430px;
+      height: 340px;
       background: #131722;
       overflow: hidden;
     }
@@ -22,7 +23,7 @@
     .tabs {
       display: flex;
       gap: 14px;
-      padding: 10px 14px 0;
+      padding: 8px 14px 0;
       background: #131722;
     }
 
@@ -32,7 +33,7 @@
       color: #e6e6e6;
       font-size: 18px;
       font-weight: 700;
-      padding: 8px 14px;
+      padding: 7px 24px;
       border-radius: 8px;
       cursor: pointer;
     }
@@ -44,7 +45,7 @@
 
     #widget {
       width: 100%;
-      height: 100%;
+      height: 290px;
       overflow: hidden;
       background: #131722;
     }
@@ -52,7 +53,8 @@
     .tradingview-widget-container,
     .tradingview-widget-container__widget {
       width: 100%;
-      height: 200px;
+      height: 290px;
+      overflow: hidden;
     }
   </style>
 </head>
@@ -89,13 +91,13 @@
         symbols: [[name, symbol]],
         chartOnly: false,
         width: "100%",
-        height: 380,
+        height: 290,
         locale: "en",
         colorTheme: "dark",
         autosize: false,
         showVolume: false,
         showMA: false,
-        hideDateRanges: false,
+        hideDateRanges: true,
         hideMarketStatus: true,
         hideSymbolLogo: true,
         scalePosition: "right",
@@ -111,6 +113,7 @@
       button.addEventListener("click", () => {
         document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
         button.classList.add("active");
+
         loadWidget(button.dataset.symbol, button.dataset.name);
       });
     });
